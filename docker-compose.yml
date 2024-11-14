@@ -1,0 +1,23 @@
+services:
+  passivbot:
+    container_name: passivbot-manager
+    image: passivbot-manager
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # ports:
+    #   - "8000:8000"
+    volumes:
+      - ./passivbot/api-keys.json:/usr/src/passivbot/api-keys.json:ro
+      - ./passivbot/configs:/usr/src/passivbot/configs
+      - ./passivbot/data/backtests:/usr/src/passivbot/backtests
+      - ./passivbot/cache/cache:/usr/src/passivbot/cache
+      - ./passivbot/cache/caches:/usr/src/passivbot/caches
+      - ./passivbot/cache/historical_data:/usr/src/passivbot/historical_data
+      - ./passivbot/data/optimize_results:/usr/src/passivbot/optimize_results
+      - ./passivbot/data/optimize_results_analysis:/usr/src/passivbot/optimize_results_analysis
+    working_dir: /usr/src/passivbot
+    #command: ["python", "src/backtest.py", "configs/bybit-multi-0.3.json"]
+    #command: ["python", "src/backtest.py", "configs/bybit-template.json"]
+    #command: ["python", "src/optimize.py", "configs/bybit-template.json"]
+    command: ["python", "src/main.py", "configs/bybit-multi-0.3.json"]
