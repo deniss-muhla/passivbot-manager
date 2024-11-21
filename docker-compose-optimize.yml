@@ -1,12 +1,12 @@
 services:
-  passivbot_trader:
-    container_name: passivbot-manager-trader
+  passivbot:
+    container_name: passivbot-manager-optimize
     image: passivbot-manager
     build:
       context: .
       dockerfile: Dockerfile
-    # ports:
-    #   - "8000:8000"
+    ports:
+      - "8888:8888"
     volumes:
       - ./passivbot/api-keys.json:/usr/src/passivbot/api-keys.json:ro
       - ./passivbot/configs:/usr/src/passivbot/configs
@@ -17,7 +17,15 @@ services:
       - ./passivbot/data/optimize_results:/usr/src/passivbot/optimize_results
       - ./passivbot/data/optimize_results_analysis:/usr/src/passivbot/optimize_results_analysis
     working_dir: /usr/src/passivbot
-    #command: ["python", "src/backtest.py", "configs/bybit-multi-0.3.json"]
-    #command: ["python", "src/backtest.py", "configs/bybit-template.json"]
-    #command: ["python", "src/optimize.py", "configs/bybit-template.json"]
-    command: ["python", "src/main.py", "configs/bybit-multi-1.1-m.json"]
+    #command: ["python", "src/optimize.py", "configs/bybit-multi-0.6.json"]
+    command: ["python", "src/backtest.py", "configs/bybit-multi-0.6.json"]
+    # command:
+    #   [
+    #     "jupyter",
+    #     "lab",
+    #     "--allow-root",
+    #     "--ip=0.0.0.0",
+    #     "--no-browser",
+    #     "--NotebookApp.token=''",
+    #   ]
+    # http://localhost:8888/lab
