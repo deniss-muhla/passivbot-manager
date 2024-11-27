@@ -31,7 +31,3 @@ RUN pip install target/wheels/passivbot_rust-*.whl
 WORKDIR /usr/src/passivbot
 
 RUN pip install jupyterlab
-
-#RUN cargo build --release
-
-#CMD ["python", "main.py"]

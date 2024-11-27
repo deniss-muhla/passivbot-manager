@@ -17,8 +17,18 @@ services:
       - ./passivbot/data/optimize_results:/usr/src/passivbot/optimize_results
       - ./passivbot/data/optimize_results_analysis:/usr/src/passivbot/optimize_results_analysis
     working_dir: /usr/src/passivbot
-    #command: ["python", "src/optimize.py", "configs/bybit-multi-0.6.json"]
-    command: ["python", "src/backtest.py", "configs/bybit-multi-0.6.json"]
+    #command: ["python", "src/optimize.py", "configs/bybit-multi-3.1.json"]
+
+    # command:
+    #   [
+    #     "python",
+    #     "src/tools/extract_best_config.py",
+    #     "optimize_results/2024-11-24T15_04_27_414_coins_f5f5b7e0_all_results.txt",
+    #     "-v",
+    #   ]
+
+    command: ["python", "src/backtest.py", "configs/bybit-multi-2.2.json"]
+
     # command:
     #   [
     #     "jupyter",

@@ -17,7 +17,4 @@ services:
       - ./passivbot/data/optimize_results:/usr/src/passivbot/optimize_results
       - ./passivbot/data/optimize_results_analysis:/usr/src/passivbot/optimize_results_analysis
     working_dir: /usr/src/passivbot
-    #command: ["python", "src/backtest.py", "configs/bybit-multi-0.3.json"]
-    #command: ["python", "src/backtest.py", "configs/bybit-template.json"]
-    #command: ["python", "src/optimize.py", "configs/bybit-template.json"]
-    command: ["python", "src/main.py", "configs/bybit-multi-1.1-m.json"]
+    command: ["python", "src/main.py", "configs/bybit-multi-2.2.json"]
